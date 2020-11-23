@@ -1,5 +1,7 @@
 package academy.belhard;
 
+import academy.belhard.entity.Person;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

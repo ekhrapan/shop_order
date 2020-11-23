@@ -1,36 +1,28 @@
 package academy.belhard;
 
-import java.sql.*;
+import academy.belhard.entity.Address;
+import academy.belhard.io.AddressFileReader;
+import academy.belhard.io.AddressesDbReader;
+import academy.belhard.io.AddressesDbWriter;
+
+import java.util.List;
+
+import static academy.belhard.io.FilePathConstants.ADDRESSES_SOURCE_FILE;
 
 public class Main {
 
-    private static final String DB_URL = "jdbc:mysql://127.0.0.1:3306/test_db?useUnicode=true&serverTimezone=UTC";
-    private static final String USER = "root";
-    private static final String PASS = "root";
+
 
     public static void main(String[] args) {
-        Connection connection = null;
+//        AddressFileReader reader = new AddressFileReader(ADDRESSES_SOURCE_FILE);
+//        List<Address> addresses = reader.readItems();
+//
+//        AddressesDbWriter writer = new AddressesDbWriter(addresses);
+//        writer.saveAll();
 
-        try {
-            connection = DriverManager.getConnection(DB_URL, USER, PASS);
-        } catch (SQLException e) {
-            e.printStackTrace();
+
+        for (Address address : (new AddressesDbReader()).readAll()) {
+            System.out.println(address);
         }
-
-        PersonConnector connector = new PersonConnector(connection);
-
-        for (Person p : connector.readAll()) {
-            System.out.println(p);
-        }
-
-        Person person = new Person(100, "Name", "Last name", "sadfa@mail", 47, "Varshava");
-        connector.add(person);
-
-        System.out.println();
-
-        for (Person p : connector.readAll()) {
-            System.out.println(p);
-        }
-
     }
 }
