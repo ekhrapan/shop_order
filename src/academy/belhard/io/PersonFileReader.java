@@ -1,8 +1,8 @@
 package academy.belhard.io;
 
-import academy.belhard.entity.Address;
+import academy.belhard.entity.Person;
 import academy.belhard.io.api.EntityFileReader;
-import academy.belhard.util.AddressUtil;
+import academy.belhard.util.PersonUtil;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -10,24 +10,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddressFileReader implements EntityFileReader<Address> {
+public class PersonFileReader implements EntityFileReader<Person> {
     private final String filepath;
 
-    public AddressFileReader(String filepath) {
+    public PersonFileReader(String filepath) {
         this.filepath = filepath;
     }
 
     @Override
-    public List<Address> readItems() {
-        List<Address> result = new ArrayList<>();
+    public List<Person> readItems() {
+        List<Person> result = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
             String line;
 
             while ((line = reader.readLine()) != null) {
-                Address address = AddressUtil.toObject(line);
+                Person person = PersonUtil.toObject(line);
 
-                result.add(address);
+                result.add(person);
             }
 
         } catch (IOException e) {

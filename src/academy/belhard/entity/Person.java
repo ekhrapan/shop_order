@@ -7,15 +7,23 @@ public class Person {
     private String lastName;
     private String email;
     private int age;
-    private String city;
+    private int addressId;
 
-    public Person(int id, String firstName, String lastName, String email, int age, String city) {
+    public Person(int id, String firstName, String lastName, String email, int age, int addressId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.age = age;
-        this.city = city;
+        this.addressId = addressId;
+    }
+
+    public Person(String firstName, String lastName, String email, int age, int addressId) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.age = age;
+        this.addressId = addressId;
     }
 
     public int getId() {
@@ -58,12 +66,12 @@ public class Person {
         this.age = age;
     }
 
-    public String getCity() {
-        return city;
+    public int getAddressId() {
+        return addressId;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
     }
 
     @Override
@@ -74,7 +82,7 @@ public class Person {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", age=" + age +
-                ", city='" + city + '\'' +
+                ", addressId=" + addressId +
                 '}';
     }
 }

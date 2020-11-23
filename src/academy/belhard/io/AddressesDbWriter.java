@@ -1,6 +1,7 @@
 package academy.belhard.io;
 
 import academy.belhard.entity.Address;
+import academy.belhard.io.api.EntityDbWriter;
 import academy.belhard.util.DbConnectionUtil;
 
 import java.sql.Connection;
@@ -8,7 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
-public class AddressesDbWriter {
+public class AddressesDbWriter implements EntityDbWriter {
     private List<Address> addresses;
 
     private static final String ADD = "INSERT INTO addresses (id, city, street, house_number) VALUES(?, ?, ?, ?)";
@@ -17,6 +18,7 @@ public class AddressesDbWriter {
         this.addresses = addresses;
     }
 
+    @Override
     public void saveAll() {
         for (Address address : addresses) {
             save(address);
