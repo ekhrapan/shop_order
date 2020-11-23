@@ -24,10 +24,14 @@ public class Main {
 //            System.out.println(address);
 //        }
 
-        EntityFileReader<Person> fileReader = new PersonFileReader(PERSONS_SOURCE_FILE);
-        List<Person> persons = fileReader.readItems();
+//        EntityFileReader<Person> fileReader = new PersonFileReader(PERSONS_SOURCE_FILE);
+//        List<Person> persons = fileReader.readItems();
+//
+//        PersonsDbWriter personsDbWriter = new PersonsDbWriter(persons);
+//        personsDbWriter.saveAll();
 
-        PersonsDbWriter personsDbWriter = new PersonsDbWriter(persons);
-        personsDbWriter.saveAll();
+        FullInfoDbReader fullInfoDbReader = new FullInfoDbReader();
+
+        fullInfoDbReader.readAll();
     }
 }
