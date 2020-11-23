@@ -2,6 +2,7 @@ package academy.belhard.io;
 
 import academy.belhard.entity.Address;
 import academy.belhard.entity.Person;
+import academy.belhard.util.AddressUtil;
 import academy.belhard.util.DbConnectionUtil;
 
 import java.sql.Connection;
@@ -24,12 +25,7 @@ public class AddressesDbReader {
             ResultSet result = statement.executeQuery();
 
             while (result.next()) {
-                int id = result.getInt("id");
-                String city = result.getString("city");
-                String street = result.getString("street");
-                int houseNumber = result.getInt("house_number");
-
-                Address address = new Address(id, city, street, houseNumber);
+                Address address = AddressUtil.toObject(result);
 
                 res.add(address);
             }
